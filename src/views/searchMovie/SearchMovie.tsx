@@ -9,24 +9,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import TablePagination from '@material-ui/core/TablePagination';
+
 
 const useStyles = makeStyles({
   table: {
     minWidth: '650px',
-    
-  },
-
-  cont: {
-    width: '30%',
-    marginLeft: '35%',
-    marginRight: '35%',
-  },
-
-  input: {
-    width: '100%',
-    position: 'relative',
-
   }
 });
 
@@ -50,16 +37,10 @@ const SearchMovie = () => {
   return (
     <div>
       <NavPanel/>
-      <div className= {classes.cont}>
       <input
-        className = {classes.input}
         placeholder="Enter movie name"
         onChange={event => setMovieToSearch(event.target.value)}
       />
-
-      </div>
-     
-      
       <TableContainer component={Paper}>
         <Table className={classes.table}>
           <TableHead>
