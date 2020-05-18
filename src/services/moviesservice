@@ -1,0 +1,96 @@
+import http from './apis'
+
+const API = {
+    SEARCH_BY_NAME: (name: string) =>`${URL}&s=$[name]`,
+    SEARCH_BY_ID: (id: string) =>`${URL}&i=$[id]`,
+}
+
+
+
+interface IMovieSearchResposneMovie {
+    Poster: string;
+    Title: string;
+    Type: string;
+    year: string;
+    imdbID: string;
+}
+
+interface IMovieSearchResposne {
+        Error?: string;
+        Reponse: string;
+        totalResults: string;
+        Search: IMovieSearchResposneMovie[];
+}
+
+interface IMovieBasicProps {
+    poster: string;
+    title: string;
+    type: string;
+    year: string;
+    id: string;
+}
+
+interface IMovieProps {
+    movies: IMovieBasicProps[];
+    totalResults: number;
+}
+
+const moviesService = {
+
+    searchByName: async (name: string) => {
+        try {
+            const searchResult : IMovieSearchResposne = await http.get(API.SEARCH_BY_NAME(name));
+            if(searchResult?.Error) {
+                console.log(searchResult.Error)
+                return null;
+            }
+            else{
+                const result: IMovieProps = {
+                       totalResults: parseInt (searchResult.totalResults),
+                       movies: searchResult.Search.map((movie) => ({
+                            id: movie.imdbID,
+                            poster: movie.Poster,
+                            title: movie.Title,
+                            type: movie.Type,
+                            year: movie.year,
+                       })),
+                }
+                return searchResult;
+            }
+        }  catch (e) {
+            console.log(e);
+        }
+    },
+    
+/*
+    searchById: async (id: string) => {
+        try{
+            const resultById = await http.get(API.SEARCH_BY_ID(id));
+            if(resultById?.Error) {
+                console.log(resultById.Error)
+                return null;
+            }
+            else{
+                const result: IMovieProps = {
+                       totalResults: parseInt (resultById.totalResults),
+                       movies: resultById.Search.map((movie) => ({
+                            id: movie.imdbID,
+                            poster: movie.Poster,
+                            title: movie.Title,
+                            type: movie.Type,
+                            year: movie.year,
+                       })),
+                }
+                return resultById;
+            }
+        }  catch (e) {
+            console.log(e);
+        }
+        
+        
+    },
+*/
+};
+
+export default moviesService;
+
