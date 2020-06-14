@@ -16,7 +16,10 @@ const App = () => {
       <BrowserRouter>
         <Provider store={store}>
           <Switch>
-            <Route path="/" component={Home}/>
+            <Route path="/movie/:id" component={Movie}/>
+            <Route path="/search" component={SearchMovie}/>
+            <Route path="/todo" component={TodoPanel}/>
+            <Route path="/" component={Home} exact/>
           </Switch>
         </Provider>
       </BrowserRouter>

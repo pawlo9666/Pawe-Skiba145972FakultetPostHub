@@ -111,7 +111,7 @@ interface IMovieResponse extends IMovieResposeProps {
   imdbVotes: string;
 }
 
-interface IMovieProps {
+export interface IMovieProps {
   production: string;
   plot: string;
   title: string;
@@ -126,6 +126,38 @@ interface IMovieProps {
   poster: string;
 }
 
+export interface IMovieByIdResponse {
+  Title: string,
+  Year: string,
+  Rated: string,
+  Released: string,
+  Runtime: string,
+  Genre: string,
+  Director: string,
+  Writer: string,
+  Actors: string,
+  Plot: string,
+  Language: string,
+  Country: string,
+  Awards: string,
+  Poster: string,
+  Ratings: IRatingsInterface[],
+  Metascore: string,
+  imdbRating: string,
+  imdbVotes: string,
+  imdbID: string,
+  Type: string,
+  DVD: string,
+  BoxOffice: string,
+  Production: string,
+  Website: string,
+  Response: string,
+}
+
+interface IRatingsInterface {
+  Source: string,
+  Value: string,
+}
 
 const movieService = {
   searchByName: async (name: string) => {
@@ -154,8 +186,9 @@ const movieService = {
   },
   searchById: async (id: string) => {
     try {
-      const resultById: IMovieResponse = await http.get(API.SEARCH_BY_ID(id));
+      const resultById: IMovieByIdResponse = await http.get(API.SEARCH_BY_ID(id));
       console.log(resultById);
+      return resultById
     } catch (e) {
       console.log(e);
     }

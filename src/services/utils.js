@@ -3,6 +3,7 @@ const http = {
 };
 
 export default http;
-export const URL = `http://www.omdbapi.com/?i=tt3896198&apikey=cd0882cb`;
+export const URL = `http://www.omdbapi.com/?apikey=cd0882cb`;
 
 
+//http://www.omdbapi.com/?i=tt3896198&apikey=cd0882cb
