@@ -64,8 +64,8 @@ const DrawerComponent: React.FC<IDrawerComponentProps> = ({ shouldBeOpen , onDra
                 <div className={classes.drawerContent}>
 
                         {redirectTo('/', 'Home', <HomeIcon />)}
-                        {redirectTo('/movie', 'Movie' , <MovieIcon />)}
                         {redirectTo('/search', 'Search Movie', <SearchIcon />)}
+                        {redirectTo('/todo', 'Favorites', <FavoriteIcon />)}
                      
                
                 </div>

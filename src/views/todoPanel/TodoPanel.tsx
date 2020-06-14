@@ -3,6 +3,7 @@ import { useService } from '../../hooks/useService';
 import { TodoService } from '../../services/todo.service';
 import { useSelector } from 'react-redux';
 import { todosSelector } from '../../store/selectors/todos.selectors';
+import NavPanel from '../../components/navPanel/NavPanel';
 
 
 const TodoPanel = () => {
@@ -19,7 +20,11 @@ const TodoPanel = () => {
   }, []);
 
 
-  return <div>{todos.map((todo, index) => <div key={index}>{todo.label}</div>)}</div>;
+  return <div>
+    <NavPanel />
+    {todos.map((todo, index) => <div key={index}>{todo.label}</div>)}
+    
+    </div>;
 };
 
 
