@@ -20,7 +20,7 @@ const useStyles = makeStyles({
           flexDirection: 'row',
           marginRight: 'auto',
           marginLeft: 'auto',
-          maxWidth: 800,
+          maxWidth: 1200,
           marginTop: 50,
           marginBottom: 50,
           backgroundColor: "#424242",
@@ -28,6 +28,8 @@ const useStyles = makeStyles({
   
     },
     media: {
+        margin: 20,
+        maxWidth: 400
         
     },
     input: {
@@ -37,7 +39,19 @@ const useStyles = makeStyles({
        marginLeft: "auto",
        marginBottom: 50
   
+    },
+    dsc: {
+        marginTop: 30,
+        alignContent: 'bottom'
+    },
+    main: {
+        fontSize: 20,
+        
+    },
+    title: {
+        fontSize: 30
     }
+
   
   });
   
@@ -53,7 +67,7 @@ React.useEffect(() => {
     });
   }, [id]);
 
-    return (
+    return(
 
         <div>
 
@@ -72,18 +86,34 @@ React.useEffect(() => {
                 </CardActions>
                 <CardContent>
                     <Typography>
-                            Title: {movies?.Title}
+                    <div className={classes.title}> {movies?.Title}</div>
                     </Typography>
                     <Typography>
-                            Writer: {movies?.Writer}
+                    <div className={classes.main}>Director: </div> {movies?.Director}
                     </Typography>
                     <Typography>
-                            Production year: {movies?.Year}
+                    <div className={classes.main}> Production year: </div>   {movies?.Year}
                     </Typography>
+                    <Typography>
+                    <div className={classes.main}>Country: </div>{movies?.Country}
+                    </Typography>
+                    <Typography>
+                    <div className={classes.main}>Realeased Date:  </div>{movies?.Released}
+                    </Typography>
+                    <Typography>
+                    <div className={classes.main}>Language: </div> {movies?.Language}
+                    </Typography>
+                    <Typography className={classes.dsc}>
+                        <div className={classes.main}>Description: </div> <br/>
+                        {movies?.Plot}
+                    </Typography>
+                
+               
+                    
                 </CardContent>
             </Card>
             ))
-            }
+            
         </div>
         
     );
